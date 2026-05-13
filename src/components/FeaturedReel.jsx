@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { motion, useInView } from 'framer-motion';
 import './FeaturedReel.css';
 
@@ -7,6 +7,15 @@ export default function FeaturedReel() {
   const videoRef = useRef(null);
   const [muted, setMuted] = useState(true);
   const inView = useInView(ref, { once: true, margin: '-100px' });
+
+  useEffect(() => {
+    if (inView && videoRef.current) {
+      // Force play for mobile devices when in view
+      videoRef.current.play().catch(error => {
+        console.log("Autoplay prevented, waiting for interaction:", error);
+      });
+    }
+  }, [inView]);
 
   const toggleMute = () => {
     if (videoRef.current) {
@@ -54,11 +63,14 @@ export default function FeaturedReel() {
                 className="reel-video" 
                 autoPlay 
                 muted 
+                defaultMuted
                 loop 
                 playsInline
+                webkitPlaysInline
+                preload="auto"
                 poster="https://images.unsplash.com/photo-1536240478700-b869070f9279?q=80&w=1932&auto=format&fit=crop"
               >
-                <source src="/reel.mp4" type="video/mp4" />
+                <source src="reel.mp4" type="video/mp4" />
                 Your browser does not support the video tag.
               </video>
               <div className="phone-reflection"></div>
