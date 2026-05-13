@@ -1,10 +1,19 @@
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import { motion, useInView } from 'framer-motion';
 import './FeaturedReel.css';
 
 export default function FeaturedReel() {
   const ref = useRef(null);
+  const videoRef = useRef(null);
+  const [muted, setMuted] = useState(true);
   const inView = useInView(ref, { once: true, margin: '-100px' });
+
+  const toggleMute = () => {
+    if (videoRef.current) {
+      videoRef.current.muted = !videoRef.current.muted;
+      setMuted(videoRef.current.muted);
+    }
+  };
 
   return (
     <section id="reel" className="section reel-section">
@@ -32,12 +41,16 @@ export default function FeaturedReel() {
                 <span className="stat-label">RATIO</span>
               </div>
             </div>
+            
+            <button className="sound-toggle-btn" onClick={toggleMute}>
+              {muted ? '🔈 UNMUTE VIDEO' : '🔊 MUTE VIDEO'}
+            </button>
           </div>
 
           <div className="reel-video-wrapper">
             <div className="phone-frame">
-              {/* Replace 'reel.mp4' with your actual video path in the public folder */}
               <video 
+                ref={videoRef}
                 className="reel-video" 
                 autoPlay 
                 muted 

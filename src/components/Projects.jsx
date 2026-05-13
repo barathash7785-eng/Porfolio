@@ -5,17 +5,19 @@ import './Projects.css';
 const projects = [
   {
     id: 1,
-    name: 'Military Drone System',
+    name: 'Military Based Drone',
     category: 'Robotics / Surveillance',
     image: '/drone.png',
-    description: 'Surveillance drone with real-time Wi-Fi/Bluetooth transmission.',
+    description: 'An unmanned aerial vehicle designed for surveillance and security applications. Using the ESP32 microcontroller, I implemented precise movement control and real-time data transmission via Wi-Fi and Bluetooth protocols.',
+    tech: 'ESP32, UAV Dynamics, Wireless Communication'
   },
   {
     id: 2,
-    name: 'Fire Suppressor Bot',
+    name: 'Robotic Fire Extinguisher',
     category: 'Automation / Safety',
     image: '/fire_robot.png',
-    description: 'Autonomous robot detecting flame and navigating hazardous environments.',
+    description: 'An autonomous robot engineered to detect and extinguish fires without human intervention. It integrates specialized flame and smoke sensors to pinpoint hazards and activates a high-precision chemical spraying system.',
+    tech: 'Sensor Fusion, Automated Safety, Robotics'
   },
 ];
 
@@ -40,13 +42,9 @@ function ProjectCard({ project, index }) {
       <div className="project-info">
         <h3 className="project-name">{project.name}</h3>
         <p className="project-description">{project.description}</p>
-        <a href="#contact" className="project-link">
-          VIEW PROJECT 
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-            <line x1="7" y1="17" x2="17" y2="7"></line>
-            <polyline points="7 7 17 7 17 17"></polyline>
-          </svg>
-        </a>
+        <div className="project-tech-stack">
+          <span className="tech-label">CORE TECH:</span> {project.tech}
+        </div>
       </div>
     </motion.div>
   );

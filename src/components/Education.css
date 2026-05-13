@@ -26,8 +26,8 @@
   width: 2px;
   background: linear-gradient(to bottom, 
     transparent, 
-    rgba(123, 111, 255, 0.3) 10%, 
-    rgba(123, 111, 255, 0.3) 90%, 
+    rgba(255, 122, 0, 0.3) 10%, 
+    rgba(255, 122, 0, 0.3) 90%, 
     transparent
   );
   transform: translateX(-50%);
@@ -54,19 +54,19 @@
   top: 24px;
   width: 16px;
   height: 16px;
-  background: rgba(123, 111, 255, 0.1);
+  background: rgba(255, 122, 0, 0.1);
   backdrop-filter: blur(4px);
-  border: 2px solid #7B6FFF;
+  border: 2px solid #FF7A00;
   border-radius: 50%;
   transform: translateX(-50%);
   z-index: 2;
-  box-shadow: 0 0 15px rgba(123, 111, 255, 0.5);
+  box-shadow: 0 0 15px rgba(255, 122, 0, 0.5);
 }
 
 .dot-inner {
   width: 6px;
   height: 6px;
-  background: #7B6FFF;
+  background: #FF7A00;
   border-radius: 50%;
   position: absolute;
   top: 50%;
@@ -85,36 +85,36 @@
 
 .timeline-card-v2:hover {
   transform: translateY(-5px) scale(1.02);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.4), 0 0 20px rgba(123, 111, 255, 0.1);
-  border-color: rgba(123, 111, 255, 0.3);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.4), 0 0 20px rgba(255, 122, 0, 0.1);
+  border-color: rgba(255, 122, 0, 0.3);
 }
 
 .card-period {
   display: flex;
   align-items: center;
   gap: 8px;
-  font-family: var(--font-mono);
+  font-family: var(--font-body);
   font-size: 0.85rem;
-  color: #7B6FFF;
+  color: #FF7A00;
   margin-bottom: 16px;
   font-weight: 600;
 }
 
 .icon-purple {
-  color: #7B6FFF;
+  color: #FF7A00;
 }
 
 .card-institution {
   font-family: var(--font-head);
-  font-size: 1.25rem;
-  font-weight: 700;
+  font-size: 1.5rem;
+  font-weight: 400;
   color: var(--text);
   margin-bottom: 8px;
-  line-height: 1.4;
+  line-height: 1.1;
 }
 
 .card-degree {
-  font-size: 1rem;
+  font-size: 0.95rem;
   color: var(--text-sub);
   margin-bottom: 24px;
 }
@@ -129,10 +129,10 @@
 
 .badge-edu {
   padding: 6px 14px;
-  background: rgba(123, 111, 255, 0.1);
-  border: 1px solid rgba(123, 111, 255, 0.2);
+  background: rgba(255, 122, 0, 0.1);
+  border: 1px solid rgba(255, 122, 0, 0.2);
   border-radius: 6px;
-  font-family: var(--font-mono);
+  font-family: var(--font-body);
   font-size: 0.8rem;
   color: #fff;
   font-weight: 600;

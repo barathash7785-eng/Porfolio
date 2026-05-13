@@ -4,12 +4,6 @@ import './Certifications.css';
 
 const certifications = [
   {
-    title: 'RBI@90 Nationwide Online Quiz 2024',
-    issuer: 'Reserve Bank of India',
-    date: '2024',
-    description: 'Participation Certificate for the nationwide online quiz organized by RBI.',
-  },
-  {
     title: 'ASTRANOVA 2K26 Technical Symposium',
     issuer: 'Coimbatore Institute of Technology',
     date: '2026',
@@ -20,6 +14,12 @@ const certifications = [
     issuer: 'Indian Info Techo',
     date: '2025',
     description: 'Certification in Machine Learning based Character Recognition.',
+  },
+  {
+    title: 'RBI@90 Nationwide Online Quiz 2024',
+    issuer: 'Reserve Bank of India',
+    date: '2024',
+    description: 'Participation Certificate for the nationwide online quiz organized by RBI.',
   },
 ];
 

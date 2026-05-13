@@ -1,0 +1,117 @@
+.services-section {
+  padding: 100px 0;
+  background: #000;
+  position: relative;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 30px;
+  margin-top: 60px;
+}
+
+.service-card {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 50px 40px;
+  border-radius: 4px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  transition: all 0.4s ease;
+}
+
+.service-card:hover {
+  background: rgba(255, 122, 0, 0.03);
+  border-color: var(--accent);
+}
+
+.service-icon-wrap {
+  color: var(--accent);
+  width: 64px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 122, 0, 0.05);
+  border-radius: 4px;
+}
+
+.service-tag-mini {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  color: var(--accent);
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  display: block;
+}
+
+.service-title {
+  font-family: var(--font-head);
+  font-size: 2.2rem;
+  color: var(--text);
+  line-height: 1.1;
+  margin-bottom: 16px;
+  text-transform: uppercase;
+}
+
+.service-desc {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--text-sub);
+  line-height: 1.6;
+  font-weight: 300;
+}
+
+.service-footer {
+  margin-top: auto;
+  padding-top: 20px;
+}
+
+.service-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-head);
+  font-size: 0.9rem;
+  color: var(--text);
+  letter-spacing: 0.1em;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.service-link:hover {
+  color: var(--accent);
+}
+
+.card-bg-glow {
+  position: absolute;
+  top: 0; right: 0;
+  width: 150px;
+  height: 150px;
+  background: radial-gradient(circle at top right, rgba(255, 122, 0, 0.1), transparent 70%);
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+
+.service-card:hover .card-bg-glow {
+  opacity: 1;
+}
+
+@media (max-width: 768px) {
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .service-card {
+    padding: 40px 30px;
+  }
+  
+  .service-title {
+    font-size: 1.8rem;
+  }
+}

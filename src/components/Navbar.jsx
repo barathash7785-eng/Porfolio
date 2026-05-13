@@ -4,6 +4,8 @@ import './Navbar.css';
 
 const links = [
   { label: 'About',     href: '#about' },
+  { label: 'Skills',    href: '#skills' },
+  { label: 'Education', href: '#education' },
   { label: 'Projects',  href: '#projects' },
   { label: 'Reel',      href: '#reel' },
   { label: 'Awards',    href: '#certifications' },

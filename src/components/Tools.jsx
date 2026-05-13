@@ -19,6 +19,18 @@ const tools = [
     description: 'Motion Graphics & VFX',
     icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/aftereffects/aftereffects-original.svg',
     color: '#CF96FD'
+  },
+  {
+    name: 'Alight Motion',
+    description: 'Mobile Motion Design',
+    icon: 'data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMTAwIDEwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48Y2lyY2xlIGN4PSI1MCIgY3k9IjUwIiByPSI0NSIgZmlsbD0iIzRCOTA4RSIvPjxwYXRoIGQ9Ik0zMCA3MCBMNTAgMzAgTDcwIDcwIE00MCA2MCBMNjAgNjAiIHN0cm9rZT0id2hpdGUiIHN0cm9rZS13aWR0aD0iOCIgZmlsbD0ibm9uZSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+PC9zdmc+',
+    color: '#4B908E'
+  },
+  {
+    name: 'VN Editor',
+    description: 'Video Post-Production',
+    icon: 'data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMTAwIDEwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iOTAiIGhlaWdodD0iOTAiIHg9IjUiIHk9IjUiIHJ4PSIyMCIgZmlsbD0iI0ZGRDIwMCIvPjx0ZXh0IHg9IjUwIiB5PSI2NSIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjQwIiBmb250LXdlaWdodD0iYm9sZCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iYmxhY2siPlZOPC90ZXh0Pjwvc3ZnPg==',
+    color: '#FFD200'
   }
 ];
 

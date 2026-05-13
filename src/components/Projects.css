@@ -78,25 +78,25 @@
 .project-description {
   font-family: var(--font-body);
   font-size: 1.1rem;
+  line-height: 1.6;
   color: var(--text-sub);
-  max-width: 450px;
+  max-width: 500px;
+  margin-bottom: 30px;
 }
 
-.project-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
-  font-family: var(--font-head);
-  font-size: 1.2rem;
-  color: var(--text);
-  text-decoration: none;
-  letter-spacing: 0.1em;
-  transition: color 0.3s ease, gap 0.3s ease;
+.project-tech-stack {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  color: var(--text-sub);
+  letter-spacing: 0.05em;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-.project-link:hover {
+.tech-label {
   color: var(--accent);
-  gap: 18px;
+  font-weight: 800;
+  margin-right: 10px;
 }
 
 @media (max-width: 968px) {

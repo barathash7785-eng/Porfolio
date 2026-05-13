@@ -1,8 +1,9 @@
 .about-content {
   display: grid;
   grid-template-columns: 1.5fr 1fr;
-  gap: 100px;
+  gap: 80px;
   margin-top: 60px;
+  align-items: center;
 }
 
 .about-text {
@@ -17,6 +18,52 @@
   line-height: 1.5;
   color: var(--text-sub);
   font-weight: 300;
+}
+
+.about-image-wrap {
+  position: relative;
+  width: 100%;
+  max-width: 480px; /* Increased width */
+  aspect-ratio: 0.8/1; /* Increased length/height */
+  margin-left: auto;
+}
+
+.cinematic-frame {
+  background: #000;
+  padding: 10px;
+  /* Removed clip-path (corner cut) */
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  position: relative;
+}
+
+.about-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.frame-accent {
+  position: absolute;
+  width: 60px; /* Increased accent size for larger image */
+  height: 60px;
+  border: 3px solid var(--accent); /* Thicker border */
+  z-index: 2;
+  pointer-events: none;
+}
+
+.frame-accent.top-left {
+  top: -8px;
+  left: -8px;
+  border-right: none;
+  border-bottom: none;
+}
+
+.frame-accent.bottom-right {
+  bottom: -8px;
+  right: -8px;
+  border-left: none;
+  border-top: none;
 }
 
 .about-highlights {
@@ -56,9 +103,11 @@
 
 .about-skills-list h3 {
   font-family: var(--font-head);
-  font-size: 2rem;
-  margin-bottom: 30px;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  margin-bottom: 40px;
   letter-spacing: 0.1em;
+  color: var(--accent);
+  line-height: 1;
 }
 
 .about-skills-list ul {
@@ -70,18 +119,17 @@
 
 .about-skills-list li {
   font-family: var(--font-head);
-  font-size: 2.5rem;
-  line-height: 1;
-  color: transparent;
-  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.2);
+  font-size: clamp(2rem, 4vw, 3rem);
+  line-height: 1.2;
+  color: var(--text);
   transition: all 0.4s ease;
   cursor: default;
+  letter-spacing: 0.05em;
 }
 
 .about-skills-list li:hover {
-  color: var(--text);
-  -webkit-text-stroke: 1px var(--text);
-  padding-left: 10px;
+  color: var(--accent);
+  padding-left: 15px;
 }
 
 .education-list {
@@ -121,11 +169,11 @@
     grid-template-columns: 1fr;
     gap: 60px;
   }
-  
+
   .about-text p {
     font-size: 1.2rem;
   }
-  
+
   .about-highlights {
     gap: 40px;
   }
