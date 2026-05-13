@@ -1,0 +1,132 @@
+.about-content {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 100px;
+  margin-top: 60px;
+}
+
+.about-text {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.about-text p {
+  font-family: var(--font-body);
+  font-size: 1.4rem;
+  line-height: 1.5;
+  color: var(--text-sub);
+  font-weight: 300;
+}
+
+.about-highlights {
+  display: flex;
+  gap: 60px;
+  margin-top: 40px;
+  margin-bottom: 60px;
+}
+
+.about-education h3 {
+  font-family: var(--font-head);
+  font-size: 2rem;
+  margin-bottom: 30px;
+  letter-spacing: 0.1em;
+}
+
+.highlight-item {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.highlight-num {
+  font-family: var(--font-head);
+  font-size: 4rem;
+  color: var(--accent);
+  line-height: 1;
+}
+
+.highlight-label {
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  color: var(--text-sub);
+  line-height: 1.4;
+}
+
+.about-skills-list h3 {
+  font-family: var(--font-head);
+  font-size: 2rem;
+  margin-bottom: 30px;
+  letter-spacing: 0.1em;
+}
+
+.about-skills-list ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.about-skills-list li {
+  font-family: var(--font-head);
+  font-size: 2.5rem;
+  line-height: 1;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.2);
+  transition: all 0.4s ease;
+  cursor: default;
+}
+
+.about-skills-list li:hover {
+  color: var(--text);
+  -webkit-text-stroke: 1px var(--text);
+  padding-left: 10px;
+}
+
+.education-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.edu-item {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.edu-date {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  color: var(--accent);
+  letter-spacing: 0.1em;
+}
+
+.edu-name {
+  font-family: var(--font-head);
+  font-size: 1.5rem;
+  color: var(--text);
+  line-height: 1.2;
+}
+
+.edu-degree {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  color: var(--text-sub);
+}
+
+@media (max-width: 968px) {
+  .about-content {
+    grid-template-columns: 1fr;
+    gap: 60px;
+  }
+  
+  .about-text p {
+    font-size: 1.2rem;
+  }
+  
+  .about-highlights {
+    gap: 40px;
+  }
+}
