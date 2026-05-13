@@ -19,6 +19,23 @@ const photos = [
   { id: 9,  src: '/gallery/IMG_20250505_183816.jpg',       title: 'Evening Glow',        category: 'Photography' },
 ];
 
+const GalleryImage = ({ src, alt, className }) => {
+  const [loaded, setLoaded] = useState(false);
+  return (
+    <div className="strip-img-wrap">
+      {!loaded && <div className="shimmer" />}
+      <img 
+        src={src} 
+        alt={alt} 
+        loading="lazy"
+        decoding="async"
+        className={`${loaded ? 'loaded' : ''} ${className || ''}`}
+        onLoad={() => setLoaded(true)}
+      />
+    </div>
+  );
+};
+
 export default function Gallery() {
   const [active, setActive] = useState('All');
   const [hovered, setHovered] = useState(null);
@@ -65,19 +82,19 @@ export default function Gallery() {
                   onMouseLeave={() => setHovered(null)}
                   onClick={() => setLightbox(photo)}
                 >
-                  <div className="strip-img-wrap">
-                    <img src={photo.src} alt={photo.title} />
-                    <div className="strip-overlay">
-                      <div className="strip-content">
-                        <span className="strip-cat">{photo.category}</span>
-                        <h3 className="strip-title">{photo.title}</h3>
-                        <div className="strip-action">
-                          <Maximize2 size={24} />
-                          <span>EXPAND VIEW</span>
-                        </div>
+                  <GalleryImage src={photo.src} alt={photo.title} />
+                  
+                  <div className="strip-overlay">
+                    <div className="strip-content">
+                      <span className="strip-cat">{photo.category}</span>
+                      <h3 className="strip-title">{photo.title}</h3>
+                      <div className="strip-action">
+                        <Maximize2 size={24} />
+                        <span>EXPAND VIEW</span>
                       </div>
                     </div>
                   </div>
+
                   <div className="strip-label">
                     <span className="strip-index">0{index + 1}</span>
                     <span className="strip-name-vertical">{photo.title}</span>
@@ -92,7 +109,7 @@ export default function Gallery() {
       {lightbox && (
         <div className="lightbox-v5" onClick={() => setLightbox(null)}>
           <div className="lightbox-v5-inner" onClick={e => e.stopPropagation()}>
-            <img src={lightbox.src} alt={lightbox.title} />
+            <img src={lightbox.src} alt={lightbox.title} loading="eager" />
             <div className="v5-meta">
               <h3>{lightbox.title}</h3>
               <button onClick={() => setLightbox(null)}>CLOSE</button>

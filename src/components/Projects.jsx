@@ -34,7 +34,7 @@ function ProjectCard({ project, index }) {
       transition={{ duration: 0.8, delay: index * 0.1 }}
     >
       <div className="project-image-wrap">
-        <img src={project.image} alt={project.name} className="project-image" />
+        <img src={project.image} alt={project.name} className="project-image" loading="lazy" decoding="async" />
         <div className="project-overlay">
           <div className="project-category">{project.category}</div>
         </div>

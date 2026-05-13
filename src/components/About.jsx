@@ -45,7 +45,7 @@ export default function About() {
             <div className="about-image-wrap cinematic-frame">
               <div className="frame-accent top-left"></div>
               <div className="frame-accent bottom-right"></div>
-              <img src="/profile.jpg" alt="MANICKAVASAGAM" className="about-image" />
+              <img src="/profile.jpg" alt="MANICKAVASAGAM" className="about-image" loading="lazy" decoding="async" />
             </div>
           </div>
         </motion.div>
