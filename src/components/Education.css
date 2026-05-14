@@ -155,3 +155,10 @@
   .galactic-card { width: 100%; }
   .left .point-anchor, .right .point-anchor { left: 30px; }
 }
+
+@media (max-width: 600px) {
+  .central-path { left: 20px; }
+  .galactic-node { padding-left: 50px; margin-bottom: 40px; }
+  .left .point-anchor, .right .point-anchor { left: 10px; }
+  .galactic-card { padding: 20px; }
+}

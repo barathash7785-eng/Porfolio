@@ -361,8 +361,17 @@
   box-shadow: 0 12px 35px rgba(0, 242, 255, 0.4);
 }
 
-@media (max-width: 900px) {
-  .terminal-body {
-    padding: 24px;
+@media (max-width: 1024px) {
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 60px;
   }
+}
+
+@media (max-width: 600px) {
+  .contact-section { padding: 60px 0; }
+  .terminal-body { padding: 20px; }
+  .term-label { font-size: 0.75rem; }
+  .term-input, .term-textarea { font-size: 0.8rem; }
+  .signal-card-row { padding: 14px 20px; }
 }

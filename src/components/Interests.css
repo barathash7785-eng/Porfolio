@@ -29,8 +29,8 @@
 /* Matrix Deck Grid */
 .orbital-matrix-deck {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 32px;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
   position: relative;
   z-index: 2;
   max-width: 1200px;

@@ -220,16 +220,23 @@
 @media (max-width: 650px) {
   .hex-grid-container {
     grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
   }
 
   .hex-name {
-    font-size: 1.1rem;
+    font-size: 1rem;
   }
+  
+  .hex-id { font-size: 0.65rem; }
 }
 
 @media (max-width: 400px) {
   .hex-grid-container {
-    grid-template-columns: 1fr;
-    max-width: 220px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
   }
+  
+  .hex-cell-wrapper { padding: 4px; }
+  .hex-progress-bar { display: none; } /* Hide bars on tiny screens to save space */
+  .hex-percentage { display: block; font-size: 0.7rem; color: var(--accent-primary); }
 }
