@@ -4,6 +4,12 @@ import './Certifications.css';
 
 const certifications = [
   {
+    title: 'II Prize – Paper Presentation',
+    issuer: 'Sri Sai Ranganathan Engineering College',
+    date: '2025',
+    description: 'Secured II Prize in Paper Presentation at the National Level Technical Symposium.',
+  },
+  {
     title: 'ASTRANOVA 2K26 Technical Symposium',
     issuer: 'Coimbatore Institute of Technology',
     date: '2026',
