@@ -1,100 +1,258 @@
-.tools-section {
+.armory-premium-section {
   padding: 80px 0;
   background: transparent;
-}
-
-.tools-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-  margin-top: 64px;
-}
-
-.section-tag {
-  font-family: var(--font-body);
-  font-size: 1.1rem;
-  color: var(--accent);
-  text-transform: uppercase;
-  letter-spacing: 0.3em;
-  font-weight: 600;
-  margin-bottom: 12px;
-  display: block;
-}
-
-.tool-card {
-  display: flex;
-  align-items: center;
-  gap: 24px;
-  padding: 32px;
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 20px;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   overflow: hidden;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
 }
 
-.tool-card:hover {
-  border-color: var(--tool-glow);
-  background: rgba(255, 255, 255, 0.05);
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6), 0 0 40px color-mix(in srgb, var(--tool-glow), transparent 60%);
-  transform: translateY(-4px);
+.armory-header-block {
+  text-align: center;
+  margin-bottom: 40px;
 }
 
-.tool-icon-wrap {
-  width: 60px;
-  height: 60px;
+.armory-cinematic-title {
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: #fff;
+  font-weight: 800;
+  margin-bottom: 12px;
+}
+
+.armory-subline {
+  font-size: 1.15rem;
+  color: var(--text-muted);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Console Rack Matrix Grid */
+.armory-rack-matrix {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 28px;
+  position: relative;
+  z-index: 2;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.armory-unit-card {
+  background: rgba(8, 8, 12, 0.55);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  border-radius: 20px;
+  padding: 36px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.2, 1, 0.3, 1);
+  text-align: left;
+}
+
+/* Absolute Embedded Unit Watermark */
+.armory-watermark {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  font-family: var(--font-head);
+  font-size: 5rem;
+  font-weight: 800;
+  color: rgba(255, 255, 255, 0.015);
+  line-height: 1;
+  pointer-events: none;
+  transition: all 0.4s;
+  z-index: 1;
+}
+
+.armory-unit-card:hover .armory-watermark {
+  color: rgba(255, 255, 255, 0.04);
+  transform: scale(1.08) translate(-4px, 4px);
+}
+
+/* Top Status Header Row */
+.unit-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 28px;
+  position: relative;
+  z-index: 2;
+}
+
+.unit-icon-chamber {
+  width: 56px;
+  height: 56px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(0, 0, 0, 0.3);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 14px;
   padding: 12px;
-  flex-shrink: 0;
+  transition: all 0.4s;
 }
 
-.tool-icon {
+.devicon-img {
   width: 100%;
   height: 100%;
   object-fit: contain;
-  /* Removed white filter to show real colored icons */
+  transition: all 0.4s;
 }
 
-.tool-info {
+.armory-unit-card:hover .unit-icon-chamber {
+  border-color: var(--tool-glow);
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.05);
+  transform: scale(1.1) rotate(-4deg);
+}
+
+.status-indicator-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 10px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  border-radius: 100px;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: var(--text-dim);
+  transition: all 0.3s;
+}
+
+.indicator-pulse-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  box-shadow: 0 0 8px var(--tool-glow);
+  animation: toolPulse 2s infinite;
+}
+
+@keyframes toolPulse {
+  0%, 100% { opacity: 0.3; transform: scale(0.8); }
+  50% { opacity: 1; transform: scale(1.2); }
+}
+
+.armory-unit-card:hover .status-indicator-tag {
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+/* Main Body Suite */
+.unit-body-core {
+  position: relative;
+  z-index: 2;
+  flex-grow: 1;
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  margin-bottom: 28px;
 }
 
-.tool-name {
-  font-family: var(--font-head);
-  font-size: 1.8rem;
-  font-weight: 400;
-  color: #fff;
-  letter-spacing: 0.05em;
-  line-height: 1;
-}
-
-.tool-desc {
-  font-family: var(--font-body);
-  font-size: 0.75rem;
-  color: rgba(255, 255, 255, 0.6);
-  letter-spacing: 0.05em;
+.unit-sub-category {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
   text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--tool-glow);
+  margin-bottom: 8px;
+  opacity: 0.8;
 }
 
-/* Responsive */
-@media (max-width: 1024px) {
-  .tools-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
+.unit-primary-name {
+  font-size: 1.55rem;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: -0.01em;
+  margin: 0;
 }
 
-@media (max-width: 640px) {
-  .tools-grid {
+/* Advanced Parameter Footer HUD */
+.unit-footer-hud {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.04);
+  position: relative;
+  z-index: 2;
+  transition: border-color 0.4s;
+}
+
+.hud-pill-box {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--text-dim);
+  letter-spacing: 0.1em;
+  transition: color 0.3s;
+}
+
+.hud-icon {
+  color: var(--tool-glow);
+}
+
+.hud-action-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: #22c55e;
+  opacity: 0.7;
+  transition: opacity 0.3s;
+}
+
+.armory-unit-card:hover .unit-footer-hud {
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.armory-unit-card:hover .hud-pill-box {
+  color: var(--text-muted);
+}
+
+.armory-unit-card:hover .hud-action-badge {
+  opacity: 1;
+}
+
+/* Underlying Ambient Floor Mask */
+.unit-ambient-floor {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at bottom left, var(--tool-glow), transparent 60%);
+  opacity: 0.03;
+  pointer-events: none;
+  transition: opacity 0.5s;
+}
+
+.armory-unit-card:hover .unit-ambient-floor {
+  opacity: 0.08;
+}
+
+/* Global Hover Card Translation */
+.armory-unit-card:hover {
+  transform: translateY(-6px);
+  background: rgba(12, 12, 18, 0.85);
+  border-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+}
+
+/* Responsive Handling */
+@media (max-width: 768px) {
+  .armory-rack-matrix {
     grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .armory-unit-card {
+    padding: 28px;
   }
 }

@@ -1,104 +1,96 @@
-import { useRef, useState } from 'react';
+import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
-import { Cpu, Code2, Palette, Zap } from 'lucide-react';
+// Premium Transparent Hex Matrix UI
 import './Skills.css';
 
-const skillsData = [
-  { name: 'ESP32', group: 'hardware', level: 90, icon: '01' },
-  { name: 'Arduino', group: 'hardware', level: 95, icon: '02' },
-  { name: 'VFX', group: 'creative', level: 98, icon: '03' },
-  { name: 'Python', group: 'software', level: 85, icon: '04' },
-  { name: 'React', group: 'software', level: 78, icon: '05' },
-  { name: 'Editing', group: 'creative', level: 92, icon: '06' },
-  { name: 'Sensors', group: 'hardware', level: 88, icon: '07' },
-  { name: 'Git', group: 'software', level: 82, icon: '08' },
-  { name: 'UI/UX', group: 'creative', level: 75, icon: '09' },
+const hexSkills = [
+  { id: '01', name: 'ESP32', level: 90 },
+  { id: '02', name: 'ARDUINO', level: 95 },
+  { id: '03', name: 'VFX', level: 98 },
+  { id: '04', name: 'PYTHON', level: 85 },
+  { id: '05', name: 'REACT', level: 78 },
+  { id: '06', name: 'EDITING', level: 92 },
+  { id: '07', name: 'SENSORS', level: 88 },
+  { id: '08', name: 'GIT', level: 82 },
+  { id: '09', name: 'UI/UX', level: 75 },
 ];
-
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: { 
-    opacity: 1,
-    transition: { staggerChildren: 0.1 }
-  }
-};
-
-const hexVariants = {
-  hidden: { opacity: 0, scale: 0.8 },
-  visible: { 
-    opacity: 1, 
-    scale: 1,
-    transition: { duration: 0.6, ease: "backOut" }
-  }
-};
 
 export default function Skills() {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: '-100px' });
-  const [hovered, setHovered] = useState(null);
 
   return (
-    <section id="skills" className="section skills-section">
+    <section id="skills" className="skills-section">
       <div className="container">
-        <motion.div
-          ref={ref}
-          initial="hidden"
-          animate={inView ? 'visible' : 'hidden'}
-          variants={containerVariants}
-        >
-          <div className="skills-layout-modern">
-            <div className="skills-sidebar">
-              <span className="section-tag">Expertise</span>
-              <h2 className="section-title">CORE <br /><span className="text-accent">SKILLS</span></h2>
-              <p className="skills-desc">
-                Merging engineering precision with cinematic creativity. 
-                Hover over the technical nodes to explore proficiency levels.
-              </p>
-              
-              <div className="skills-stats-mini">
-                <div className="stat-box">
-                  <span className="stat-val">09</span>
-                  <span className="stat-label">DOMAINS</span>
-                </div>
-                <div className="stat-box">
-                  <span className="stat-val">Master</span>
-                  <span className="stat-label">LEVEL</span>
-                </div>
+        <div className="mastery-grid-layout">
+          {/* Left Column: Title & Domain Stats */}
+          <motion.div 
+            className="mastery-left-panel"
+            initial={{ opacity: 0, x: -30 }}
+            animate={inView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.8 }}
+          >
+            <span className="mastery-subtitle">EXPERTISE</span>
+            <h2 className="mastery-main-title">
+              CORE <br />
+              <span className="orange-glow-text">SKILLS</span>
+            </h2>
+            
+            <p className="mastery-desc">
+              Merging engineering precision with cinematic creativity. Hover over the technical nodes to explore proficiency levels.
+            </p>
+
+            <div className="mastery-footer-stats">
+              <div className="m-stat-block">
+                <span className="m-stat-val">09</span>
+                <span className="m-stat-lbl">DOMAINS</span>
+              </div>
+              <div className="m-stat-block">
+                <span className="m-stat-val text-master">MASTER</span>
+                <span className="m-stat-lbl">LEVEL</span>
               </div>
             </div>
+          </motion.div>
 
-            <div className="hex-grid-wrap">
-              <div className="hex-grid">
-                {skillsData.map((skill, index) => (
-                  <motion.div 
-                    key={skill.name}
-                    className={`hex-item ${skill.group}`}
-                    variants={hexVariants}
-                    onMouseEnter={() => setHovered(index)}
-                    onMouseLeave={() => setHovered(null)}
-                  >
-                    <div className="hex-content">
-                      <span className="hex-num">{skill.icon}</span>
-                      <h4 className="hex-name">{skill.name}</h4>
-                      <div className="hex-progress-wrap">
-                        <div className="hex-progress-track">
-                          <motion.div 
-                            className="hex-progress-fill"
-                            initial={{ width: 0 }}
-                            animate={inView ? { width: `${skill.level}%` } : { width: 0 }}
-                            transition={{ duration: 1.5, delay: 0.5 }}
-                          />
-                        </div>
-                        <span className="hex-pct">{skill.level}%</span>
+          {/* Right Column: Hexagonal Matrix Grid */}
+          <motion.div 
+            ref={ref}
+            className="mastery-right-matrix"
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={inView ? { opacity: 1, scale: 1 } : {}}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
+            <div className="hex-grid-container">
+              {hexSkills.map((skill, idx) => (
+                <motion.div
+                  key={skill.name}
+                  className="hex-cell-wrapper"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={inView ? { opacity: 1, y: 0 } : {}}
+                  transition={{ duration: 0.5, delay: idx * 0.08 }}
+                >
+                  <div className="hex-node-inner">
+                    <span className="hex-id">{skill.id}</span>
+                    <h3 className="hex-name">{skill.name}</h3>
+                    
+                    <div className="hex-progress-bar">
+                      <div className="hex-track">
+                        <motion.div 
+                          className="hex-fill"
+                          initial={{ width: 0 }}
+                          animate={inView ? { width: `${skill.level}%` } : { width: 0 }}
+                          transition={{ duration: 1.2, delay: 0.4 + idx * 0.08 }}
+                        />
                       </div>
                     </div>
-                    <div className="hex-bg"></div>
-                  </motion.div>
-                ))}
-              </div>
+                    
+                    <span className="hex-percentage">{skill.level}%</span>
+                  </div>
+                </motion.div>
+              ))}
             </div>
-          </div>
-        </motion.div>
+          </motion.div>
+        </div>
       </div>
     </section>
   );

@@ -1,109 +1,107 @@
 import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
-import { Video, Camera, Film, Heart } from 'lucide-react';
+import { Video, Camera, Film, Disc } from 'lucide-react';
 import './Interests.css';
 
-const hobbies = [
+const orbitalPursuits = [
   {
-    id: 1,
+    id: '01',
+    code: 'RENDER.01',
     title: 'Video Editing',
+    desc: 'Temporal space calibration through rhythm cutting, color mapping pipelines, and absolute sound design layers.',
     icon: Film,
-    color: '#7B6FFF',
-    bg: 'rgba(123, 111, 255, 0.1)'
+    ringAccent: 'ring-cyan'
   },
   {
-    id: 2,
+    id: '02',
+    code: 'CAPTURE.02',
     title: 'Videography',
+    desc: 'Capturing dynamic kinetic energy through manual focal planes, spatial staging, and physical optical tracking.',
     icon: Video,
-    color: '#00D4FF',
-    bg: 'rgba(0, 212, 255, 0.1)'
+    ringAccent: 'ring-violet'
   },
   {
-    id: 3,
+    id: '03',
+    code: 'APERTURE.03',
     title: 'Photography',
+    desc: 'Freezing dramatic geometric compositions and spatial light field contrast to isolate deep static visual layers.',
     icon: Camera,
-    color: '#FF6B6B',
-    bg: 'rgba(255, 107, 107, 0.1)'
+    ringAccent: 'ring-pink'
   }
 ];
-
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: { 
-    opacity: 1, 
-    transition: { staggerChildren: 0.2 } 
-  },
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, x: -30 },
-  visible: { 
-    opacity: 1, 
-    x: 0, 
-    transition: { duration: 0.6, ease: "easeOut" } 
-  },
-};
-
-const cardVariants = {
-  hidden: { opacity: 0, scale: 0.8 },
-  visible: { 
-    opacity: 1, 
-    scale: 1,
-    transition: { duration: 0.5, ease: "backOut" } 
-  }
-};
 
 export default function Interests() {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: '-100px' });
 
   return (
-    <section id="interests" className="interests-section">
+    <section id="interests" className="pursuits-orbital-section">
       <div className="container">
+        {/* Widescreen Sleek Centered Header */}
         <motion.div
           ref={ref}
-          initial="hidden"
-          animate={inView ? 'visible' : 'hidden'}
-          variants={containerVariants}
-          className="interests-grid"
+          className="orbital-header-container"
+          initial={{ opacity: 0, y: 20 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.7 }}
         >
-          <div className="interests-text">
-            <motion.h2 className="section-title-alt left" variants={itemVariants}>
-              Interests & <span className="gradient-text">Hobbies</span>
-            </motion.h2>
-            
-            <motion.p className="interests-description" variants={itemVariants}>
-              Beyond engineering, I am deeply involved in creative visual arts. 
-              Capturing stories through a lens and bringing them to life on screen 
-              is what drives my creativity.
-            </motion.p>
-
-            <motion.div className="interests-tag" variants={itemVariants}>
-              <Heart size={16} fill="#7B6FFF" color="#7B6FFF" />
-              <span>Creativity in Motion</span>
-            </motion.div>
-          </div>
-
-          <div className="hobbies-list">
-            {hobbies.map((hobby) => (
-              <motion.div
-                key={hobby.id}
-                className="hobby-card glass-card"
-                variants={cardVariants}
-                whileHover={{ y: -10, transition: { duration: 0.2 } }}
-              >
-                <div 
-                  className="hobby-icon-wrapper" 
-                  style={{ backgroundColor: hobby.bg }}
-                >
-                  <hobby.icon size={32} style={{ color: hobby.color }} />
-                </div>
-                <h3 className="hobby-title">{hobby.title}</h3>
-                <div className="hobby-line" style={{ backgroundColor: hobby.color }} />
-              </motion.div>
-            ))}
-          </div>
+          <span className="section-subtitle">Aperture Architecture</span>
+          <h2 className="orbital-cinematic-title">
+            Creative <span className="gradient-text">Pursuits</span>
+          </h2>
+          <p className="orbital-subline">
+            Precision engineering applied to professional visual capture workflows.
+          </p>
         </motion.div>
+
+        {/* Orbital Concentric Ring Cards Array */}
+        <div className="orbital-matrix-deck">
+          {orbitalPursuits.map((item, idx) => (
+            <motion.div
+              key={item.id}
+              className={`orbital-module-card ${item.ringAccent}`}
+              initial={{ opacity: 0, scale: 0.94 }}
+              animate={inView ? { opacity: 1, scale: 1 } : {}}
+              transition={{ duration: 0.6, delay: idx * 0.12 }}
+            >
+              {/* Rotated left vertical industrial metadata watermark */}
+              <div className="vertical-edge-label">
+                <span>{item.code}</span>
+              </div>
+
+              {/* Absolute Corner Micro-Beacon */}
+              <div className="corner-beacon-sphere" />
+
+              {/* Top Concentric Aperture Ring Box */}
+              <div className="aperture-ring-wrapper">
+                {/* Simulated spinning outer orbital stroke rings */}
+                <div className="outer-orbital-ring" />
+                <div className="inner-orbital-capsule">
+                  <item.icon size={28} strokeWidth={1.5} className="orbital-icon" />
+                </div>
+                
+                {/* Absolute status index ring tag */}
+                <span className="ring-index-tag">{item.id}</span>
+              </div>
+
+              {/* Central Information Core */}
+              <div className="orbital-card-content">
+                <h3 className="orbital-name">{item.title}</h3>
+                
+                {/* Elegant hairline double borders bounding info text */}
+                <div className="hairline-divider top-div" />
+                <p className="orbital-desc">{item.desc}</p>
+                <div className="hairline-divider bottom-div" />
+              </div>
+
+              {/* Bottom integrated status indicator loop */}
+              <div className="orbital-status-loop">
+                <Disc size={12} className="spin-disc-icon" />
+                <span>OPTIC BUFFER STABLE</span>
+              </div>
+            </motion.div>
+          ))}
+        </div>
       </div>
     </section>
   );

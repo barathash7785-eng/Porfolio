@@ -1,6 +1,7 @@
 import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
-import { Calendar, MapPin, GraduationCap, School, Award } from 'lucide-react';
+import { Calendar, MapPin, GraduationCap, School } from 'lucide-react';
+// Premium Transparent Galactic Timeline UI
 import './Education.css';
 
 const educationData = [
@@ -36,77 +37,62 @@ const educationData = [
   }
 ];
 
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: { 
-    opacity: 1, 
-    transition: { staggerChildren: 0.3 } 
-  },
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 30 },
-  visible: { 
-    opacity: 1, 
-    y: 0, 
-    transition: { duration: 0.6, ease: "easeOut" } 
-  },
-};
-
 export default function Education() {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: '-100px' });
 
   return (
-    <section id="education" className="education-section">
+    <section id="education" className="education-section galactic-mode">
+      
       <div className="container">
-        <motion.div
-          ref={ref}
-          initial="hidden"
-          animate={inView ? 'visible' : 'hidden'}
-          variants={containerVariants}
-          className="education-content"
-        >
-          <motion.h2 className="section-title-alt" variants={itemVariants}>
-            Educational <span className="gradient-text">Journey</span>
-          </motion.h2>
+        <div className="edu-header-center">
+          <h2 className="section-title">Educational <span className="gradient-text">Journey</span></h2>
+        </div>
 
-          <div className="timeline-v2">
-            <div className="timeline-line-v2" />
-            
-            {educationData.map((item) => (
-              <motion.div
-                key={item.id}
-                className={`timeline-item-v2 ${item.align}`}
-                variants={itemVariants}
-              >
-                <div className="timeline-dot-v2">
-                  <div className="dot-inner" />
-                </div>
+        <div className="galactic-timeline" ref={ref}>
+          {/* Central Path Line */}
+          <div className="central-path" />
 
-                <div className="timeline-card-v2 glass-card">
-                  <div className="card-period">
-                    <Calendar size={14} className="icon-purple" />
+          {educationData.map((item, index) => (
+            <motion.div
+              key={item.id}
+              className={`galactic-node ${item.align}`}
+              initial={{ opacity: 0, x: item.align === 'left' ? -50 : 50 }}
+              animate={inView ? { opacity: 1, x: 0 } : {}}
+              transition={{ duration: 0.8, delay: index * 0.2 }}
+            >
+              {/* Central Glowing Point */}
+              <div className="point-anchor">
+                <div className="point-glow" />
+                <div className="point-inner" />
+              </div>
+
+              <div className="galactic-card glass-panel">
+                <div className="card-meta">
+                  <div className="meta-date">
+                    <Calendar size={14} className="purple" />
                     <span>{item.period}</span>
                   </div>
-                  
-                  <h3 className="card-institution">{item.institution}</h3>
-                  <p className="card-degree">{item.degree}</p>
+                </div>
 
-                  <div className="card-footer-edu">
-                    <div className="badge-edu">
-                      {item.score}
-                    </div>
-                    <div className="card-location">
-                      <MapPin size={14} />
-                      <span>{item.location}</span>
-                    </div>
+                <div className="card-main">
+                  <h3 className="inst-name">{item.institution}</h3>
+                  <p className="degree-name">{item.degree}</p>
+                </div>
+
+                <div className="card-footer">
+                  <div className="score-pill">
+                    {item.score}
+                  </div>
+                  <div className="loc-info">
+                    <MapPin size={12} />
+                    <span>{item.location}</span>
                   </div>
                 </div>
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
       </div>
     </section>
   );

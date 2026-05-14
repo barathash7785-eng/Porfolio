@@ -1,57 +1,53 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useState } from 'react';
+import { motion, useSpring } from 'framer-motion';
+import './CustomCursor.css';
 
 export default function CustomCursor() {
-  const dotRef = useRef(null);
-  const ringRef = useRef(null);
+  const [isHovered, setIsHovered] = useState(false);
+  
+  const springX = useSpring(0, { stiffness: 500, damping: 50 });
+  const springY = useSpring(0, { stiffness: 500, damping: 50 });
 
   useEffect(() => {
-    let mx = -100, my = -100;
-    let rx = -100, ry = -100;
-    let rafId;
-
     const onMove = (e) => {
-      mx = e.clientX;
-      my = e.clientY;
+      springX.set(e.clientX);
+      springY.set(e.clientY);
     };
 
-    const onEnter = () => document.body.classList.add('cursor-hover');
-    const onLeave = () => document.body.classList.remove('cursor-hover');
-
-    const animate = () => {
-      // Dot follows immediately
-      if (dotRef.current) {
-        dotRef.current.style.left = mx + 'px';
-        dotRef.current.style.top  = my + 'px';
-      }
-      // Ring lags behind
-      rx += (mx - rx) * 0.12;
-      ry += (my - ry) * 0.12;
-      if (ringRef.current) {
-        ringRef.current.style.left = rx + 'px';
-        ringRef.current.style.top  = ry + 'px';
-      }
-      rafId = requestAnimationFrame(animate);
-    };
+    const onHoverEnter = () => setIsHovered(true);
+    const onHoverLeave = () => setIsHovered(false);
 
     window.addEventListener('mousemove', onMove);
-
-    document.querySelectorAll('a, button, .btn, .project-card, .skill-node').forEach(el => {
-      el.addEventListener('mouseenter', onEnter);
-      el.addEventListener('mouseleave', onLeave);
+    
+    const targets = document.querySelectorAll('a, button, .glass-panel, .bento-card, .strip-item');
+    targets.forEach(t => {
+      t.addEventListener('mouseenter', onHoverEnter);
+      t.addEventListener('mouseleave', onHoverLeave);
     });
 
-    animate();
-
     return () => {
-      cancelAnimationFrame(rafId);
       window.removeEventListener('mousemove', onMove);
+      targets.forEach(t => {
+        t.removeEventListener('mouseenter', onHoverEnter);
+        t.removeEventListener('mouseleave', onHoverLeave);
+      });
     };
-  }, []);
+  }, [springX, springY]);
 
   return (
-    <>
-      <div className="cursor-dot" ref={dotRef} />
-      <div className="cursor-ring" ref={ringRef} />
-    </>
+    <div className="cursor-wrapper">
+      <motion.div 
+        className="cursor-dot"
+        style={{ x: springX, y: springY }}
+      />
+      <motion.div 
+        className={`cursor-ring ${isHovered ? 'hovered' : ''}`}
+        style={{ x: springX, y: springY }}
+        animate={{
+          scale: isHovered ? 2.5 : 1,
+          opacity: isHovered ? 0.2 : 0.8
+        }}
+      />
+    </div>
   );
 }

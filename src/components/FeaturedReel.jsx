@@ -1,5 +1,6 @@
 import { useRef, useState, useEffect } from 'react';
 import { motion, useInView } from 'framer-motion';
+import { Volume2, VolumeX } from 'lucide-react';
 import './FeaturedReel.css';
 
 export default function FeaturedReel() {
@@ -10,9 +11,8 @@ export default function FeaturedReel() {
 
   useEffect(() => {
     if (inView && videoRef.current) {
-      // Force play for mobile devices when in view
       videoRef.current.play().catch(error => {
-        console.log("Autoplay prevented, waiting for interaction:", error);
+        console.log("Autoplay prevented:", error);
       });
     }
   }, [inView]);
@@ -25,55 +25,56 @@ export default function FeaturedReel() {
   };
 
   return (
-    <section id="reel" className="section reel-section">
+    <section id="reel" className="reel-section">
       <div className="container">
         <motion.div
           ref={ref}
-          className="reel-container"
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={inView ? { opacity: 1, scale: 1 } : {}}
-          transition={{ duration: 0.8 }}
+          className="reel-grid"
+          initial={{ opacity: 0, y: 30 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 1 }}
         >
-          <div className="reel-content">
-            <h2 className="section-title">CINEMATIC <br /> <span className="text-accent">WORK SHOWCASE</span></h2>
-            <p className="reel-description">
+          <div className="reel-info">
+            <span className="section-subtitle">Showcase</span>
+            <h2 className="section-title">Cinematic <br /><span className="gradient-text">Masterreel</span></h2>
+            <p className="reel-text">
               A high-impact cinematic showcase featuring advanced visual effects, 
-              color grading, and rhythmic composition.
+              color grading, and rhythmic composition that defines my signature style.
             </p>
-            <div className="reel-stats">
-              <div className="stat">
-                <span className="stat-value">30s</span>
-                <span className="stat-label">DURATION</span>
+            
+            <div className="reel-metadata glass-panel">
+              <div className="meta-item">
+                <span className="meta-val">4K</span>
+                <span className="meta-lab">Resolution</span>
               </div>
-              <div className="stat">
-                <span className="stat-value">16:9</span>
-                <span className="stat-label">RATIO</span>
+              <div className="meta-item">
+                <span className="meta-val">60 FPS</span>
+                <span className="meta-lab">Framerate</span>
               </div>
             </div>
-            
-            <button className="sound-toggle-btn" onClick={toggleMute}>
-              {muted ? '🔈 UNMUTE VIDEO' : '🔊 MUTE VIDEO'}
+
+            <button className="sound-control glass-panel" onClick={toggleMute}>
+              {muted ? <VolumeX size={20} /> : <Volume2 size={20} />}
+              <span>{muted ? 'Unmute Experience' : 'Mute Sound'}</span>
             </button>
           </div>
 
-          <div className="reel-video-wrapper">
-            <div className="phone-frame">
-              <video 
-                ref={videoRef}
-                className="reel-video" 
-                autoPlay 
-                muted 
-                defaultMuted
-                loop 
-                playsInline
-                webkitPlaysInline
-                preload="auto"
-                poster="https://images.unsplash.com/photo-1536240478700-b869070f9279?q=80&w=1932&auto=format&fit=crop"
-              >
-                <source src="reel.mp4" type="video/mp4" />
-                Your browser does not support the video tag.
-              </video>
-              <div className="phone-reflection"></div>
+          <div className="reel-display">
+            <div className="display-frame glass-panel">
+              <div className="video-container">
+                <video 
+                  ref={videoRef}
+                  className="reel-video" 
+                  autoPlay 
+                  muted 
+                  loop 
+                  playsInline
+                  poster="https://images.unsplash.com/photo-1536240478700-b869070f9279?q=80&w=1932&auto=format&fit=crop"
+                >
+                  <source src="reel.mp4" type="video/mp4" />
+                </video>
+              </div>
+              <div className="frame-glow" />
             </div>
           </div>
         </motion.div>

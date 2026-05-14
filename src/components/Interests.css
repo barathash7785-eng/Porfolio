@@ -1,125 +1,257 @@
-.interests-section {
-  padding: 100px 0;
+.pursuits-orbital-section {
+  padding: 80px 0;
+  background: transparent;
   position: relative;
   overflow: hidden;
 }
 
-.interests-grid {
+.orbital-header-container {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.orbital-cinematic-title {
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: #fff;
+  font-weight: 800;
+  margin-bottom: 12px;
+}
+
+.orbital-subline {
+  font-size: 1.15rem;
+  color: var(--text-muted);
+  max-width: 550px;
+  margin: 0 auto;
+}
+
+/* Matrix Deck Grid */
+.orbital-matrix-deck {
   display: grid;
-  grid-template-columns: 1fr 1.5fr;
-  gap: 60px;
-  align-items: center;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 32px;
+  position: relative;
+  z-index: 2;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-.interests-text {
-  max-width: 500px;
-}
-
-.section-title-alt.left {
-  text-align: left;
-  margin-bottom: 24px;
-}
-
-.interests-description {
-  font-size: 1.1rem;
-  line-height: 1.7;
-  color: var(--text-sub);
-  margin-bottom: 32px;
-}
-
-.interests-tag {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-family: var(--font-mono);
-  font-size: 0.9rem;
-  color: #7B6FFF;
-  font-weight: 600;
-}
-
-.hobbies-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 24px;
-}
-
-.hobby-card {
-  padding: 40px 20px;
+.orbital-module-card {
+  background: rgba(8, 8, 12, 0.55);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  border-radius: 24px;
+  padding: 48px 36px 36px;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  transition: all 0.3s ease;
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.5s cubic-bezier(0.2, 1, 0.3, 1);
 }
 
-.hobby-card:hover {
-  border-color: rgba(123, 111, 255, 0.2);
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+/* Ring Accent Specifics */
+.ring-cyan { --ring-color: var(--accent-primary); }
+.ring-violet { --ring-color: #7864ff; }
+.ring-pink { --ring-color: #ff007a; }
+
+/* Rotated Left Vertical Edge Label */
+.vertical-edge-label {
+  position: absolute;
+  top: 40px;
+  left: 12px;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.25em;
+  color: rgba(255, 255, 255, 0.12);
+  transition: color 0.4s;
+  pointer-events: none;
 }
 
-.hobby-icon-wrapper {
-  width: 80px;
-  height: 80px;
-  border-radius: 20px;
+.orbital-module-card:hover .vertical-edge-label {
+  color: var(--ring-color);
+}
+
+/* Absolute Corner Micro-Beacon Sphere */
+.corner-beacon-sphere {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--ring-color);
+  opacity: 0.4;
+  box-shadow: 0 0 8px var(--ring-color);
+  transition: all 0.4s;
+}
+
+.orbital-module-card:hover .corner-beacon-sphere {
+  opacity: 1;
+  transform: scale(1.5);
+}
+
+/* Top Concentric Aperture Ring Box */
+.aperture-ring-wrapper {
+  position: relative;
+  width: 96px;
+  height: 96px;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 24px;
-  transition: transform 0.3s ease;
+  margin-bottom: 32px;
 }
 
-.hobby-card:hover .hobby-icon-wrapper {
-  transform: scale(1.1) rotate(5deg);
+.outer-orbital-ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 1px dashed rgba(255, 255, 255, 0.1);
+  transition: all 0.5s;
+  animation: spinSlow 20s linear infinite;
 }
 
-.hobby-title {
-  font-family: var(--font-head);
-  font-size: 1.1rem;
+@keyframes spinSlow {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.inner-orbital-capsule {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ring-color);
+  transition: all 0.4s cubic-bezier(0.2, 1, 0.3, 1);
+  z-index: 2;
+}
+
+.orbital-module-card:hover .outer-orbital-ring {
+  border-color: var(--ring-color);
+  animation-duration: 8s;
+  box-shadow: 0 0 20px rgba(0, 242, 255, 0.15);
+}
+
+.orbital-module-card:hover .inner-orbital-capsule {
+  background: var(--ring-color);
+  color: #000;
+  transform: scale(1.1);
+  border-color: transparent;
+}
+
+.ring-index-tag {
+  position: absolute;
+  bottom: -4px;
+  right: -4px;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
   font-weight: 700;
-  color: var(--text);
-  margin-bottom: 16px;
+  color: var(--text-dim);
+  background: #060609;
+  padding: 2px 6px;
+  border-radius: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: all 0.3s;
 }
 
-.hobby-line {
-  width: 30px;
-  height: 3px;
-  border-radius: 2px;
-  opacity: 0.3;
+.orbital-module-card:hover .ring-index-tag {
+  color: #fff;
+  border-color: var(--ring-color);
 }
 
-.hobby-card:hover .hobby-line {
-  width: 50px;
-  opacity: 1;
-  transition: all 0.3s ease;
+/* Central Information Core */
+.orbital-card-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-grow: 1;
+  width: 100%;
 }
 
-@media (max-width: 992px) {
-  .interests-grid {
+.orbital-name {
+  font-size: 1.55rem;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 20px;
+  letter-spacing: -0.01em;
+}
+
+.hairline-divider {
+  width: 100%;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.04);
+  transition: all 0.4s;
+}
+
+.orbital-desc {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+  padding: 20px 0;
+  margin: 0;
+  transition: color 0.3s;
+}
+
+.orbital-module-card:hover .orbital-desc {
+  color: #ddd;
+}
+
+.orbital-module-card:hover .hairline-divider {
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
+}
+
+/* Bottom Integrated Status Loop */
+.orbital-status-loop {
+  margin-top: 24px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--text-dim);
+  letter-spacing: 0.15em;
+  transition: color 0.3s;
+}
+
+.spin-disc-icon {
+  animation: spinSlow 4s linear infinite;
+  color: var(--text-dim);
+  transition: color 0.3s;
+}
+
+.orbital-module-card:hover .orbital-status-loop {
+  color: var(--text-muted);
+}
+
+.orbital-module-card:hover .spin-disc-icon {
+  color: var(--ring-color);
+}
+
+/* Global Hover Translation */
+.orbital-module-card:hover {
+  transform: translateY(-8px);
+  background: rgba(14, 14, 22, 0.75);
+  border-color: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+}
+
+/* Responsive Scaling */
+@media (max-width: 768px) {
+  .orbital-matrix-deck {
     grid-template-columns: 1fr;
-    gap: 40px;
+    gap: 24px;
   }
-  
-  .interests-text {
-    max-width: 100%;
-    text-align: center;
-  }
-  
-  .section-title-alt.left {
-    text-align: center;
-  }
-  
-  .interests-tag {
-    justify-content: center;
-  }
-  
-  .hobbies-list {
-    margin-top: 20px;
-  }
-}
 
-@media (max-width: 480px) {
-  .hobbies-list {
-    grid-template-columns: 1fr;
+  .orbital-module-card {
+    padding: 36px 24px 28px;
   }
 }
